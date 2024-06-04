@@ -68,7 +68,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = "hashtrust_shopping.urls"
 
-# AUTH_USER_MODEL = "jwt_auth.Users"
+AUTH_USER_MODEL = "jwt_auth.Users"
 
 TEMPLATES = [
     {
