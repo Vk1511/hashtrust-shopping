@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  hashtrust-shopping-db:
+    image: postgres:14-alpine
+    container_name: hashtrust-shopping-db
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./volumes/hashtrust-shopping-db/data:/var/lib/postgresql/data:rw
+    ports:
+      - "5444:5432"
+    stop_grace_period: 1m
+  

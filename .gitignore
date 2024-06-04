@@ -1,0 +1,12 @@
+# Frontend
+node_modules
+
+# Backend
+venv
+*.pyc
+
+# Common
+.env
+
+# Docker
+volumes
