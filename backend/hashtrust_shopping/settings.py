@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     # 3rd party apps
     "rest_framework",
     "rest_framework_simplejwt",
+    "django_filters",
     # custom app
     "jwt_auth",
     "products",
@@ -137,6 +138,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
     # "DEFAULT_RENDERER_CLASSES": (
     #     "rest_framework.renderers.JSONRenderer",
     #     "rest_framework.renderers.BrowsableAPIRenderer",
