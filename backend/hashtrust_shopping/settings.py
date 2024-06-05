@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # custom app
     "jwt_auth",
     "products",
+    "orders",
 ]
 
 MIDDLEWARE = [

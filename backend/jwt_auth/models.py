@@ -19,6 +19,16 @@ class HashTrustUserManager(BaseUserManager):
 
 
 class Users(AbstractUser):
+    """
+    Custom user model representing a user of the application.
+
+    Fields:
+        first_name: The first name of the user. Must contain alphabets only.
+        last_name: The last name of the user. Must contain alphabets only.
+        email: The email address of the user. Unique and serves as the username.
+        date_of_birth: The date of birth of the user.
+    """
+
     username = None
 
     #  Regular Expresson for "Only Alphabets" validation
