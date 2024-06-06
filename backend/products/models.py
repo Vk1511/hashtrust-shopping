@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 # To get AUTH_USER_MODEL from settings.py file
 User = get_user_model()
@@ -37,6 +39,13 @@ class Product(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
+    discount = models.PositiveIntegerField(
+        default=0,
+        validators=[
+            MaxValueValidator(99),
+            MinValueValidator(0),
+        ],
+    )
     category = models.ForeignKey(
         ProductCategory, on_delete=models.CASCADE, related_name="products"
     )
@@ -44,6 +53,12 @@ class Product(models.Model):
     image = models.ImageField(upload_to="product_images/", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    # this function will update order completion status
+    def deduct_quantity(self, qty, save=False):
+        self.quantity -= qty
+        if save:
+            self.save()
 
     def __str__(self):
         return self.name

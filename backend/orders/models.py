@@ -15,7 +15,9 @@ class CartItem(models.Model):
         unique_together = ("user", "product")
 
     def __str__(self):
-        return f"{self.quantity} x {self.product.name} in cart for {self.cart.user.username}"
+        return (
+            f"{self.quantity} x {self.product.name} in cart for {self.user.first_name}"
+        )
 
 
 class Order(models.Model):
@@ -30,9 +32,17 @@ class Order(models.Model):
     """
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
+    # total_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    # total_products = models.PositiveIntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_completed = models.BooleanField(default=False)
+
+    # this function will update order completion status
+    def update_order_status(self, status=False, save=False):
+        self.is_completed = status
+        if save:
+            self.save()
 
     def __str__(self):
         return f"Order {self.pk} by {self.user.username}"
@@ -72,12 +82,28 @@ class Payment(models.Model):
         payment_date: The date and time when the payment was made.
     """
 
+    class PaymentMethods(models.TextChoices):
+        DEBIT_CARD = "DEBIT_CARD", "Debit Card"
+        CREDIT_CARD = "CREDIT_CARD", "Credit Card"
+        UPI = "UPI", "UPI"
+
+    class PaymentStatus(models.TextChoices):
+        PENDING = "PENDING", "Pending"
+        IN_PROGRESS = "IN PROGRESS", "In Progress"
+        DONE = "DONE", "Done"
+
     order = models.OneToOneField(
         Order, on_delete=models.CASCADE, related_name="payment"
     )
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    payment_method = models.CharField(max_length=100)
-    payment_status = models.CharField(max_length=100)
+    payment_method = models.CharField(
+        max_length=16,
+        choices=PaymentMethods.choices,
+        default=PaymentMethods.DEBIT_CARD,
+    )
+    payment_status = models.CharField(
+        max_length=16, choices=PaymentStatus.choices, default=PaymentStatus.PENDING
+    )
     payment_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
