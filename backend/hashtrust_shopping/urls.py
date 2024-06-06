@@ -22,4 +22,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("auth/user/", include("jwt_auth.urls")),
     path("products/", include("products.urls")),
+    path("user/", include("orders.urls")),
 ]

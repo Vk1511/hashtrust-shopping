@@ -53,9 +53,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
 
         read_only_fields = ("is_superuser",)
 
-        create_only_fields = ("is_developer",)
-
-        # "email" field inside AccountableUser Model is required field
+        # "email" field inside User Model is required field
         # But here we need "email" as optional request parameter
         # To do that we need following change
         extra_kwargs = {"email": {"required": False}}

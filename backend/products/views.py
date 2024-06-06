@@ -1,6 +1,6 @@
 from rest_framework import viewsets, generics
 from rest_framework.response import Response
-from django.db.models import Count, Sum
+from django.db.models import Count
 from .models import Product, ProductCategory
 from jwt_auth.permissions import IsAdminOrSuperAdminOrReadOnly
 from .serializers import (
