@@ -1,0 +1,17 @@
+.search-box-container {
+  margin: 1rem;
+}
+.search-input {
+  width: 57rem;
+  padding: 1rem;
+  border-radius: 1.4rem;
+  border: 0px solid rgba(190, 190, 190, 0.5);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  height: 1.6rem;
+}
+
+.search-input::placeholder{
+    color: rgba(148, 148, 148, 1);
+    font-size: 1rem;
+    font-weight: 100;
+}

@@ -50,7 +50,7 @@ class Product(models.Model):
         ProductCategory, on_delete=models.CASCADE, related_name="products"
     )
     quantity = models.IntegerField(default=0)
-    image = models.ImageField(upload_to="product_images/", blank=True)
+    image = models.ImageField(upload_to="media/product_images/", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
