@@ -4,9 +4,17 @@
     width: 100%;
     margin: 2rem 0;
     gap: 1rem;
+    /* flex-wrap: wrap; */
 }
 
 .site-logo{
     font-size: 1.2rem;
     font-weight: 600;
+}
+
+@media (max-width: 720px) {
+    .header-container{
+        flex-direction: column;
+        align-items: center;
+    }
 }

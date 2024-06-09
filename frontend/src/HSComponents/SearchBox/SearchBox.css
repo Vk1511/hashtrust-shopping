@@ -3,6 +3,7 @@
 }
 .search-input {
   width: 57rem;
+  /* width: 100%; */
   padding: 1rem;
   border-radius: 1.4rem;
   border: 0px solid rgba(190, 190, 190, 0.5);
@@ -14,4 +15,14 @@
     color: rgba(148, 148, 148, 1);
     font-size: 1rem;
     font-weight: 100;
+}
+
+@media (max-width: 1025px) {
+  .search-box-container {
+    width: 90%;
+    margin: 0;
+  }
+  .search-input{
+    width: 100%;
+  }
 }

@@ -8,3 +8,9 @@
 .layout-component-container{
     margin: 0 5rem;
 }
+
+@media (max-width: 720px) {
+    .layout-component-container{
+        margin: 0 1rem;
+    }
+}

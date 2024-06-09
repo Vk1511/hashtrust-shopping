@@ -42,6 +42,11 @@
   box-shadow: 5px 5px 20px 0px rgba(196, 255, 202, 0.5);
 }
 
+.pill-red {
+  background-color: rgba(204, 121, 66, 0.5);
+  box-shadow: 5px 5px 20px 0px rgba(196, 255, 202, 0.5);
+}
+
 .product-amt {
   font-weight: 600;
   font-size: 1.2rem;
@@ -51,10 +56,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .product-action-icon {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -64,5 +71,15 @@
 }
 
 .product-icon:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+
+@media (max-width: 720px) {
+  .product-card-container {
+    width: 100%;
+  }
+  .product-actions{
+    flex-direction: column;
+  }
 }

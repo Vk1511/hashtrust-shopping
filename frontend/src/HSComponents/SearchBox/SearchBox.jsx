@@ -23,21 +23,6 @@ const SearchBar = () => {
         placeholder="Search"
         className="search-input"
       />
-      <button
-        onClick={toggleFilter}
-        style={{
-          position: 'absolute',
-          right: '10px',
-          top: '5px',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-        }}
-      >
-        <span role="img" aria-label="filter">
-          🔍
-        </span>
-      </button>
     </div>
   );
 };

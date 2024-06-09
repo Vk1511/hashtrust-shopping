@@ -1,4 +1,11 @@
 .filter-conatiner{
     display: flex;
     gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+    .filter-conatiner{
+        justify-content: center;
+    }
 }
