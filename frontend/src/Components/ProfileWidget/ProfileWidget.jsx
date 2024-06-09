@@ -15,7 +15,7 @@ export default function ProfileWidget() {
           className="widget-icon"
           alt="wishlist"
         />
-        <span className="wishlist-count">{cartDetails.length}</span>
+        <span className="wishlist-count">0</span>
       </div>
       <div className="widget">
         <img
@@ -26,7 +26,7 @@ export default function ProfileWidget() {
       </div>
       <div className="widget" onClick={() => navigate('/check-out')}>
         <img src="./Assets/cart.png" className="widget-icon" alt="cart" />
-        <span className="wishlist-count cart-count">0</span>
+        <span className="wishlist-count cart-count">{cartDetails.length}</span>
       </div>
     </div>
   );

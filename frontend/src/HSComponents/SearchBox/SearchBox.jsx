@@ -1,25 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import useDebounce from "../../hooks/useDebounce";
+import { fetchProducts } from "../../redux/features/products/productsSlice";
 import "./SearchBox.css";
 
-
 const SearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const dispatch = useDispatch();
+  const [searchTimer, setSearchTimer] = useState("");
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const toggleFilter = () => {
-    setIsFilterOpen(!isFilterOpen);
+  const handleSearch = (event) => {
+    clearTimeout(searchTimer);
+    const timeout = setTimeout(() => {
+      if (event.length) {
+        dispatch(fetchProducts(`?search=${event}`));
+      } else {
+        dispatch(fetchProducts(``));
+      }
+    }, 500);
+    setSearchTimer(timeout);
   };
 
   return (
     <div className="search-box-container">
       <input
         type="text"
-        value={searchTerm}
-        onChange={handleSearchChange}
+        // value={searchTerm}
+        onChange={(e) => handleSearch(e.target.value)}
         placeholder="Search"
         className="search-input"
       />
