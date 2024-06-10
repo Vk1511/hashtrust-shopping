@@ -1,11 +1,11 @@
-from django_filters import FilterSet, NumberFilter, BooleanFilter
+from django_filters import rest_framework as filters
 from .models import Product
 
 
-class ProductFilter(FilterSet):
+class ProductFilter(filters.FilterSet):
     # Filter by category ID
-    category = NumberFilter(field_name="category__id")
-    is_available_only = BooleanFilter(method="filter_by_availability")
+    category = filters.NumberFilter(field_name="category__id")
+    is_available_only = filters.BooleanFilter(method="filter_by_availability")
 
     class Meta:
         model = Product

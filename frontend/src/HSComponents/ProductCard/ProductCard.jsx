@@ -4,17 +4,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addProductToCart } from "../../redux/features/cart/cartSlice";
+import ColorPill, { AVAIALABILITY_PILL_COLOR } from "../ColorPill/ColorPill";
 import "./ProductCard.css";
-
-const AVAIALABILITY_PILL_COLOR = {
-  ORANAGE: "orange",
-  GREEN: "green",
-  RED: "red",
-};
-
-const AvailabilityPill = ({ text, color = AVAIALABILITY_PILL_COLOR.GREEN }) => {
-  return <div className={`availability-pill pill-${color}`}>{text}</div>;
-};
 
 export default function ProductCard({ product }) {
   const dispatch = useDispatch();
@@ -59,17 +50,17 @@ export default function ProductCard({ product }) {
         <div className="product-availability">
           <div>
             {quantity == 0 ? (
-              <AvailabilityPill
+              <ColorPill
                 text="Out of Stock"
                 color={AVAIALABILITY_PILL_COLOR.RED}
               />
             ) : quantity <= 5 ? (
-              <AvailabilityPill
+              <ColorPill
                 text={`Only ${quantity} left.`}
                 color={AVAIALABILITY_PILL_COLOR.ORANAGE}
               />
             ) : (
-              <AvailabilityPill
+              <ColorPill
                 text="Avialable"
                 color={AVAIALABILITY_PILL_COLOR.GREEN}
               />

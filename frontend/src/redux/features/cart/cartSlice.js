@@ -16,6 +16,16 @@ export const addProductToCart = createAsyncThunk(
   }
 );
 
+export const updatedCartProduct = createAsyncThunk(
+  "cart/updatedCartProduct",
+  async ({id, payload}, { dispatch }) => {
+    console.log("ffffff",id, payload);
+    const response = await axiosInstance.patch(`user/cart/${id}/`, payload);
+    await dispatch(fetchCart());
+    return response.data;
+  }
+);
+
 const cartSlice = createSlice({
   name: "cart",
   initialState: { items: [], cart_details: [], payment_summary: {} },
@@ -48,6 +58,9 @@ const cartSlice = createSlice({
       .addCase(fetchCart.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(updatedCartProduct.fulfilled, (state, action) => {
+        state.status = "succeeded";
       });
   },
 });

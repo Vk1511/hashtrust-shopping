@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import useDebounce from "../../hooks/useDebounce";
 import { fetchProducts } from "../../redux/features/products/productsSlice";
 import "./SearchBox.css";
 

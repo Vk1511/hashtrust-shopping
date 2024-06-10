@@ -1,0 +1,30 @@
+.payment-summary-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  width: 70%;
+  margin-top: 4rem;
+}
+
+.payment-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.payment-summary-section {
+  display: flex;
+  gap: 5rem;
+  justify-content: flex-end;
+}
+
+.payment-summary-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.payment-btn, .payment-btn:hover {
+  background: rgba(127, 210, 135, 1);
+  color: white;
+  font-weight: 600;
+}
